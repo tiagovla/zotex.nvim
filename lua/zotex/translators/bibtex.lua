@@ -74,12 +74,16 @@ end
 
 M.types = vim.tbl_keys(zotero2bibtexTypeMap)
 function M.citekey(item)
-    local output = ""
+    local output, count = "", 0
     for _, creator in pairs(item.creators) do
         if creator.name then
             output = output .. creator.name
         else
             output = output .. creator.lastName
+        end
+        count = count + 1
+        if count == 2 then
+            break
         end
     end
     if item.date then

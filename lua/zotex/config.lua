@@ -1,7 +1,8 @@
 local config = {
-    update_file = true,
-    translator = "bibtex",
+    auto_save = true,
     path = "~/Zotero/zotero.sqlite",
+    translator = "bibtex",
+    update_file = true,
 }
 
 return config

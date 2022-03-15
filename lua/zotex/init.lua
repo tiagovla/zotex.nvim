@@ -27,6 +27,11 @@ function source._get_keyword_pattern()
     return [[\\cite{\(\k*,\=\)\+]]
 end
 
+function source:is_available()
+    local ft = vim.bo.filetype
+    return ft == "tex"
+end
+
 function source:complete(request, callback)
     if not vim.regex(self._get_keyword_pattern()):match_str(request.context.cursor_before_line) then
         return callback()
@@ -48,7 +53,7 @@ function source:execute(completion_item, callback)
         local data = utils.split(core.get_entry(completion_item.label), "\n")
         vim.api.nvim_buf_set_lines(0, -1, -1, false, data)
     end
-    vim.cmd [[$ | b#]]
+    vim.cmd [[$ | w | b# ]]
     return callback(completion_item)
 end
 
