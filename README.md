@@ -17,3 +17,20 @@ cmp.setup.filetype("tex", {
     },
 })
 ```
+## TODO
+### Features
+- [ ] Enable read-only for multiple connections
+
+### Configs:
+- [ ] Optional auto save
+- [ ] Custom database path
+- [ ] Configurable `citationkey` format
+
+### Translators
+- [x] BibTex
+- [ ] BibLaTex
+- [ ] BetterBibTex
+- [ ] BetterBibLaTex
+
+### Future
+- [ ] Fetch from online Zotero
