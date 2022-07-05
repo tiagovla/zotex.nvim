@@ -4,7 +4,7 @@
 Plugin to import references from the Zotero's local database.
 
 ```lua
-use { "tiagovla/zotex.nvim", requires = "tami5/sqlite.lua" }
+use { "tiagovla/zotex.nvim", requires = "kkharji/sqlite.lua" }
 ```
 
 ## Configuration
