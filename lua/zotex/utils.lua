@@ -9,9 +9,9 @@ function U.match_found(line_list, match)
     return false
 end
 
-function U.scandir(directory)
+function U.scandir(directory, extension)
     local t, popen = {}, io.popen
-    local pfile = popen('ls "' .. directory .. '"| grep .bib')
+    local pfile = popen('ls "' .. directory .. '"| grep ' .. extension)
     for filename in pfile:lines() do
         table.insert(t, directory .. "/" .. filename)
     end

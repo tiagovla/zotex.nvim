@@ -1,8 +1,7 @@
 local config = {
     auto_save = true,
-    path = "~/Zotero/zotero.sqlite",
+    path = vim.fn.expand "$HOME/Zotero/zotero.sqlite",
     translator = "bibtex",
-    update_file = true,
 }
 
 return config

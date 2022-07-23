@@ -1,10 +1,6 @@
-local db = require "zotex.database"
-local translators = require "zotex.translators"
-
 local M = {}
-local translator = translators.new "bibtex"
 
-function M.get_candidates()
+function M.get_candidates(db, translator)
     local items = {}
     local cache = db.syncCache
 
@@ -20,7 +16,7 @@ function M.get_candidates()
     return items
 end
 
-function M.get_entry(citekey)
+function M.get_entry(translator, citekey)
     return translator.do_export(M.items[citekey])
 end
 
