@@ -129,7 +129,7 @@ function M.do_export(item)
             creatorString = creator.lastName .. ", " .. creator.firstName
         end
         if creator.fieldMode then
-            creatorString = "{" + creatorString + "}"
+            creatorString = "{" .. creatorString .. "}"
         end
 
         if creator.creatorType == "editor" or creator.creatorType == "seriesEditor" then

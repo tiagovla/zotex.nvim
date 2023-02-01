@@ -1,6 +1,5 @@
 local core = require "zotex.core"
 local db = require "zotex.database"
-local translators = require "zotex.translators"
 local utils = require "zotex.utils"
 
 local source = {}
@@ -9,7 +8,7 @@ source.new = function(config)
     local self = setmetatable({}, { __index = source })
     self.config = config
     self.db = db.new(self.config)
-    self.translator = translators.new(self.config.translator)
+    self.translator = self.config.translator
     return self
 end
 
@@ -52,9 +51,7 @@ function source:execute(completion_item, callback)
     local paths = U.scandir(cwd, self.translator.extension)
     local buf
     if #paths > 0 then
-        vim.cmd("e " .. paths[1])
-        buf = vim.api.nvim_win_get_buf(0)
-        vim.cmd "b#"
+        buf = vim.fn.bufadd(paths[1])
     else
         vim.notify(("zotex.nvim: Could not find %s in %s."):format(self.translator.extension, vim.fn.expand "$PWD"))
         return callback(completion_item)
@@ -65,7 +62,7 @@ function source:execute(completion_item, callback)
         vim.api.nvim_buf_set_lines(buf, -1, -1, false, data)
     end
     if self.config.auto_save then
-        vim.cmd(("b%s | w | b#"):format(buf))
+        vim.api.nvim_buf_call(buf, vim.cmd.write)
     end
     return callback(completion_item)
 end

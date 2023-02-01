@@ -12,6 +12,9 @@ end
 function U.scandir(directory, extension)
     local t, popen = {}, io.popen
     local pfile = popen('ls "' .. directory .. '"| grep ' .. extension)
+    if pfile == nil then
+        return {}
+    end
     for filename in pfile:lines() do
         table.insert(t, directory .. "/" .. filename)
     end
