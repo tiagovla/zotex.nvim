@@ -1,6 +1,7 @@
 # Zotex.nvim
 
 ## Installation
+
 Plugin to import references from the Zotero's local database.
 
 ```lua
@@ -12,6 +13,7 @@ use {
 ```
 
 ## Configuration
+
 ```lua
 cmp.setup.filetype("tex", {
     sources = cmp.config.sources {
@@ -21,28 +23,34 @@ cmp.setup.filetype("tex", {
 ```
 
 ## Defaults
+
 ```lua
 require("zotex").setup {
     auto_save = true,
-    path = vim.fn.expand "$HOME/Zotero/zotero.sqlite",
+    path = "~/Zotero/zotero.sqlite",
     translator = "bibtex",
 }
 ```
 
 ## TODO
+
 ### Features
+
 - [x] Enable read-only for multiple connections
 
 ### Configs:
+
 - [x] Optional auto save
 - [x] Custom database path
 - [ ] Configurable `citationkey` format
 
 ### Translators
+
 - [x] BibTex
 - [ ] BibLaTex
 - [ ] BetterBibTex
 - [ ] BetterBibLaTex
 
 ### Future
+
 - [ ] Fetch from online Zotero
