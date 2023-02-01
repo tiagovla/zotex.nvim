@@ -8,7 +8,7 @@ function M.new(config)
         return nil
     end
 
-    local ok, db = pcall(sqlite, { uri = "file:" .. config.path .. "?immutable=1", open_mode = "ro", syncCache = {} })
+    local ok, db = pcall(sqlite.open, sqlite, "file:" .. config.path .. "?immutable=1", { open_mode = "ro" })
     if ok then
         return db
     else
