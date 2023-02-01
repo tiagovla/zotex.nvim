@@ -91,7 +91,7 @@ function M.citekey(item)
         local year = string.match(item.date, "%d%d%d%d") or ""
         output = output .. year
     end
-    return output
+    return output:gsub("%s+", "")
 end
 
 function M.do_export(item)
